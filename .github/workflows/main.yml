@@ -32,6 +32,7 @@ jobs:
       - name: Build uniapp
         run: |
           ls -alh
+          sudo npm update
           cd uniapp_glaucoma/
           yarn install
           npm run build:app-plus
