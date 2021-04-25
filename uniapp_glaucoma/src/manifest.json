@@ -8,9 +8,10 @@
     /* 5+App特有相关 */
     "app-plus" : {
         "compatible" : {
-            // "compilerVersion": "3.1.11",
-            "runtimeVersion" : "3.1.9"
+            "ignoreVersion" : true
         },
+        // "compilerVersion": "3.1.11",
+        // "runtimeVersion" : "3.1.9"
         "usingComponents" : true,
         "nvueCompiler" : "uni-app",
         "compilerVersion" : 3,
@@ -77,7 +78,8 @@
             "sdkConfigs" : {
                 "speech" : {
                     "ifly" : {}
-                }
+                },
+                "oauth" : {}
             },
             "orientation" : [ "portrait-primary" ]
         }
@@ -140,3 +142,5 @@
         }
     }
 }
+// "compilerVersion": "3.1.11",
+
