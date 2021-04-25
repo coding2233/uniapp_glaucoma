@@ -32,7 +32,7 @@ jobs:
       - name: Build uniapp
         run: |
           ls -alh
-          cd uniapp-glaucoma/
+          cd uniapp_glaucoma/
           yarn install
           npm run build:app-plus
           ls -alh dist/build/app-plus
@@ -42,7 +42,7 @@ jobs:
       - name: Replace the Uniapp package in Android
         run: |
           rm -rf app/src/main/assets/apps/__UNI__E90A4C7/www
-          mv uniapp-glaucoma/dist/build/app-plus app/src/main/assets/apps/__UNI__E90A4C7/www
+          mv uniapp_glaucoma/dist/build/app-plus app/src/main/assets/apps/__UNI__E90A4C7/www
 
       # Runs a set of commands using the runners shell
       - name: Build Android
