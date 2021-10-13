@@ -74,6 +74,7 @@ module.exports = {
 					var reg = /^[0-9]{6}$/;
 					if (!reg.test(data[rule[i].name])) { this.error = rule[i].errorMsg; return false; }
 				break;
+				
 				case 'reg':
 					var reg = new RegExp(rule[i].checkRule);
 					if (!reg.test(data[rule[i].name])) { this.error = rule[i].errorMsg; return false; }

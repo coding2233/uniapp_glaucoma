@@ -7,9 +7,11 @@
 		</template>
 		<template v-else>
 			<checkbox-group v-if="multiple" class="checklist-group" :class="{'is-list':mode==='list','is-wrap':wrap}" @change="chagne">
-				<label class="checklist-box" :class="item.labelClass" :style="[item.styleBackgroud]" v-for="(item,index) in dataList" :key="index">
+				<label class="checklist-box" :class="item.labelClass" :style="[item.styleBackgroud]" v-for="(item,index) in dataList"
+				 :key="index">
 					<checkbox class="hidden" hidden :disabled="!!item.disabled" :value="item.value+''" :checked="item.selected" />
-					<view v-if="(mode !=='tag' && mode !== 'list') || ( mode === 'list' && icon === 'left')" class="checkbox__inner" :class="item.checkboxBgClass" :style="[item.styleIcon]">
+					<view v-if="(mode !=='tag' && mode !== 'list') || ( mode === 'list' && icon === 'left')" class="checkbox__inner"
+					 :class="item.checkboxBgClass" :style="[item.styleIcon]">
 						<view class="checkbox__inner-icon" :class="item.checkboxClass"></view>
 					</view>
 					<view class="checklist-content" :class="{'list-content':mode === 'list' && icon ==='left'}">
@@ -21,7 +23,8 @@
 			<radio-group v-else class="checklist-group" :class="{'is-list':mode==='list','is-wrap':wrap}" @change="chagne">
 				<label class="checklist-box" :class="item.labelClass" :style="[item.styleBackgroud]" v-for="(item,index) in dataList" :key="index">
 					<radio hidden :disabled="item.disabled" :value="item.value+''" :checked="item.selected" />
-					<view v-if="(mode !=='tag' && mode !== 'list') || ( mode === 'list' && icon === 'left')" class="radio__inner" :class="item.checkboxBgClass" :style="[item.styleBackgroud]">
+					<view v-if="(mode !=='tag' && mode !== 'list') || ( mode === 'list' && icon === 'left')" class="radio__inner"
+					 :class="item.checkboxBgClass" :style="[item.styleBackgroud]">
 						<view class="radio__inner-icon" :class="item.checkboxClass" :style="[item.styleIcon]"></view>
 					</view>
 					<view class="checklist-content" :class="{'list-content':mode === 'list' && icon ==='left'}">
@@ -99,11 +102,11 @@
 				type: String,
 				default: 'left'
 			},
-			selectedColor: {
+			selectedColor:{
 				type: String,
 				default: ''
 			},
-			selectedTextColor: {
+			selectedTextColor:{
 				type: String,
 				default: ''
 			},
@@ -468,19 +471,19 @@
 					if (this.styles.selectedTextColor) {
 						styles.color = this.styles.selectedTextColor
 					} else {
-						if (this.mode === 'tag') {
+						if(this.mode === 'tag'){
 							styles.color = '#fff'
-						} else {
+						}else{
 							styles.color = this.styles.selectedColor
 						}
 					}
 				}
 				return styles
 			},
-			setStyleRightIcon(item) {
+			setStyleRightIcon(item){
 				let styles = {}
 				if (item.selected) {
-					if (this.mode === 'list') {
+					if(this.mode === 'list'){
 						styles.borderColor = this.styles.selectedColor
 					}
 				}
@@ -491,9 +494,7 @@
 	}
 </script>
 
-<style scoped>
-	@charset "UTF-8";
-
+<style>
 	.uni-data-checklist {
 		position: relative;
 		z-index: 0;
@@ -662,6 +663,7 @@
 		transform: rotate(45deg);
 	}
 
+
 	/* 禁用样式 */
 	.is-default-disabled-bg {
 		background-color: #F2F6FC;
@@ -697,6 +699,7 @@
 	.is-list-disabled-checked {
 		color: #a1dcc1;
 	}
+
 
 	.is-button-disabled {
 		/* #ifdef H5 */
@@ -754,6 +757,7 @@
 		opacity: 0.4;
 	}
 
+
 	.is-default-checked-list {
 		border-color: #007aff;
 		opacity: 1;
@@ -803,6 +807,7 @@
 		opacity: 0.4;
 	}
 
+
 	.disabled-cursor {
 		/* #ifdef H5 */
 		cursor: not-allowed;
@@ -812,10 +817,10 @@
 	.is-wrap {
 		flex-direction: column;
 	}
-
+	
 	.hidden {
-		/* #ifdef MP-ALIPAY */
-		display: none;
-		/* #endif */
+		 /* #ifdef MP-ALIPAY */
+		 display: none;
+		 /* #endif */
 	}
 </style>

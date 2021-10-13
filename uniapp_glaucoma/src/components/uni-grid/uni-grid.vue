@@ -1,6 +1,6 @@
 <template>
 	<view class="uni-grid-wrap">
-		<view :id="elId" ref="uni-grid" class="uni-grid" :class="{ 'uni-grid--border': showBorder }" :style="{ 'border-left-color':borderColor}">
+		<view :id="elId" ref="uni-grid" class="uni-grid" :class="{ 'uni-grid--border': showBorder }" :style="{ 'border-left-style':'solid','border-left-color':borderColor, 'border-left-width':showBorder?'1px':0 }">
 			<slot />
 		</view>
 	</view>
@@ -10,18 +10,6 @@
 	// #ifdef APP-NVUE
 	const dom = uni.requireNativePlugin('dom');
 	// #endif
-
-	/**
-	 * Grid 宫格
-	 * @description 宫格组件
-	 * @tutorial https://ext.dcloud.net.cn/plugin?id=27
-	 * @property {Number} column 每列显示个数
-	 * @property {String} borderColor 边框颜色
-	 * @property {Boolean} showBorder 是否显示边框
-	 * @property {Boolean} square 是否方形显示
-	 * @property {Boolean} Boolean 点击背景是否高亮
-	 * @event {Function} change 点击 grid 触发，e={detail:{index:0}}，index 为当前点击 gird 下标
-	 */
 	export default {
 		name: 'UniGrid',
 		props: {
@@ -66,9 +54,7 @@
 			this.children = []
 		},
 		mounted() {
-			this.$nextTick(() => {
-				this.init()
-			})
+			this.init()
 		},
 		methods: {
 			init() {
@@ -90,13 +76,13 @@
 					.select(`#${this.elId}`)
 					.boundingClientRect()
 					.exec(ret => {
-						this.width = parseInt((ret[0].width - 1) / this.column) + 'px'
+						this.width = parseInt((ret[0].width-1) / this.column) + 'px'
 						fn(this.width)
 					})
 				// #endif
 				// #ifdef APP-NVUE
 				dom.getComponentRect(this.$refs['uni-grid'], (ret) => {
-					this.width = parseInt((ret.size.width - 1) / this.column) + 'px'
+					this.width = parseInt((ret.size.width-1) / this.column)  + 'px'
 					fn(this.width)
 				})
 				// #endif
@@ -105,7 +91,7 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.uni-grid-wrap {
 		/* #ifndef APP-NVUE */
 		display: flex;
@@ -121,20 +107,14 @@
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
+		// flex: 1;
 		flex-direction: row;
 		flex-wrap: wrap;
 	}
 
 	.uni-grid--border {
-		position: relative;
-		/* #ifdef APP-NVUE */
-		border-left-color: #e5e5e5;
+		border-left-color: $uni-border-color;
 		border-left-style: solid;
-		border-left-width: 0.5px;
-		/* #endif */
-		/* #ifndef APP-NVUE */
-		z-index: 1;
-		border-left: 1px #e5e5e5 solid;
-		/* #endif */
+		border-left-width: 1px;
 	}
 </style>
